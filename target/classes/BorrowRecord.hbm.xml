@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-9-26 10:17:11 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.niit.model.BorrowRecord" table="T_BORROWRECORD">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+        <property name="userid" type="int">
+            <column name="USERID" />
+        </property>
+        <property name="bookid" type="int">
+            <column name="BOOKID" />
+        </property>
+        <property name="borrowdate" type="java.lang.String">
+            <column name="BORROWDATE" />
+        </property>
+        <property name="shouldreturndate" type="java.lang.String">
+            <column name="SHOULDRETURNDATE" />
+        </property>
+    </class>
+</hibernate-mapping>
