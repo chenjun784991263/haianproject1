@@ -47,4 +47,6 @@ public class MessageConstant {
     public static final String message3="message3";
     public static final String message4="message4";
     
+    public static final String  StockList="stocklist";
+    
 }

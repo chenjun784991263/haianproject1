@@ -81,6 +81,9 @@
 			<form action=<%=UrlConstant.Admin_SERVLET%> method="post"><input type="submit" name="submit" value="ManageAccount"></form>
 			</div>
 			
+			<div class="div2">
+			<form action=<%=UrlConstant.Admin_SERVLET%> method="post"><input type="submit" name="submit" value="AddStock"></form>
+			</div>
 			
 			
 			

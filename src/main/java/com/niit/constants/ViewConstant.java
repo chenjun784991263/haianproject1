@@ -36,5 +36,7 @@ public class ViewConstant {
     
     public static final String CancelReserve="CancelReserve.jsp";
     
+    public static final String AddStock="addstock.jsp";
+    
     
 }

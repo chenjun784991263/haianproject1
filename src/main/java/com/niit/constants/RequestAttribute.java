@@ -76,4 +76,8 @@ public class RequestAttribute {
     public static final String Cancel_Reserve="CancelReserve";
     public static final String _Cancel_Reserve="cancelreserve";
     
+    public static final String Add_Stock="AddStock";
+    
+    public static final String _Add_Stock="addstock";
+    
 }

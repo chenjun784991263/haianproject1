@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.niit.Bean.StockBean;
 import com.niit.constants.MessageConstant;
 import com.niit.constants.RequestAttribute;
 import com.niit.constants.UrlConstant;
@@ -80,6 +81,8 @@ public class AdminServlet extends HttpServlet {
         String money=request.getParameter("increasedmoney");
         String accountid=request.getParameter("accountid");
         String quantity=request.getParameter("quantity");
+        String stockid=request.getParameter("stockid");
+        String numtoadd=request.getParameter("numtoadd");
         
 		if(st.equalsIgnoreCase(UrlConstant.Login_Admin))
 		{
@@ -576,6 +579,44 @@ public class AdminServlet extends HttpServlet {
 	
 	
 	}
+	
+	if(st.equals(RequestAttribute.Add_Stock))
+{
+	try {
+		List<StockBean> list=AdminDao.queryStock();
+	    request.setAttribute(MessageConstant.StockList, list);
+	    request.getRequestDispatcher(ViewConstant.AddStock).forward(request, response);
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	
+	
+	
+	
+}
+	if(st.equals(RequestAttribute._Add_Stock))
+	{
+		
+		try {
+			AdminDao.addstock(Integer.parseInt(stockid),Integer.parseInt(numtoadd));
+		    request.getRequestDispatcher(ViewConstant.Admin_WELCOMEPAGE).forward(request, response);
+			
+			
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+	}
+	
 	
 	
 	}

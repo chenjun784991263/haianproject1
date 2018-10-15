@@ -10,6 +10,7 @@ import org.hibernate.Transaction;
 
 import com.niit.Bean.AccountBean;
 import com.niit.Bean.BookBean;
+import com.niit.Bean.StockBean;
 import com.niit.constants.MessageConstant;
 import com.niit.dbutil.DBConnection;
 import com.niit.model.Account;
@@ -492,7 +493,51 @@ public static void AddAccount(Account a) throws SQLException
 	   
    }
  
+   public static List<StockBean> queryStock() throws SQLException{
+	   
+	   Session session=DBConnection.buildConection();
+	   Transaction tx=session.beginTransaction();
+	   List<StockBean>stocklist=new ArrayList<StockBean>();
+		List<Object[]> list=session.createSQLQuery("SELECT s.id,b.name,b.author,b.releasingtime,b.price,b.contenttype FROM t_stock s LEFT JOIN t_book b ON s.bookid=b.id").list();
+		for(Object[] row:list) {
+		    StockBean sb=new StockBean();
+			sb.setId(Integer.parseInt(row[0].toString()));
+			sb.setName(row[1].toString());
+			sb.setAuthor(row[2].toString());
+			sb.setReleasingtime(row[3].toString());
+			sb.setPrice(Double.parseDouble(row[4].toString()));
+			sb.setContenttype(row[5].toString());
+			stocklist.add(sb);
+		}
+		session.close();
+		return stocklist;
+			
+	   
+	   
+	   
+	   
+	   
+   }
  
+   public static void addstock(Integer stockid,int num) throws SQLException
+   {
+	   
+	   Session session=DBConnection.buildConection();
+	   Transaction tx=session.beginTransaction();
+	   Stock stock=session.get(Stock.class,stockid);
+	   stock.setQuantity(stock.getQuantity()+num);
+	   session.update(stock);
+	   tx.commit();
+	   session.close();
+	   
+	   
+   }
+   
+   
+   
+   
+   
+   
 
 
 }

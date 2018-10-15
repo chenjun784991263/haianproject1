@@ -154,6 +154,21 @@ table{
 	
 }
 
+#addstock{
+	
+	position:relative;
+	top:160px;
+	
+	
+}
+
+
+
+#addstock td{
+	
+	border:1px solid blue;
+	
+}
 
 
 

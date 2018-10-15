@@ -2,7 +2,9 @@ package com.niit.dao;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.niit.Bean.BorrowRecordBean;
 import com.niit.Bean.ReserveRecordBean;
@@ -149,6 +151,28 @@ public class UserDAO {
 		
 	 }
 	
+	 public static Set<BorrowRecord> QueryOverdueBorrowRecord() throws SQLException
+	 {
+		 Session session=DBConnection.buildConection();
+			Transaction tx=session.beginTransaction();
+			Set<BorrowRecord>borrowrecord=new HashSet<BorrowRecord>();
+			List<Object[]> list=session.createSQLQuery("SELECT * FROM t_borrowrecord WHERE SHOULDRETURNDATE < CURRENT_DATE").list();
+			for(Object[] row:list)	
+			{
+				BorrowRecord bb=new BorrowRecord();
+				bb.setId(Integer.parseInt(row[0].toString()));
+			    bb.setUserid(Integer.parseInt(row[1].toString()));
+				bb.setBookid(Integer.parseInt(row[2].toString()));
+			    bb.setBorrowdate(row[3].toString());
+			    bb.setShouldreturndate(row[4].toString());
+		        borrowrecord.add(bb);
+			
+			}
+			session.close();
+			return borrowrecord;
+				
+	 }
+	 
 	 public static List<BorrowRecordBean> QueryBorrowRecord(Integer userid) throws SQLException
 	 {
 		 Session session=DBConnection.buildConection();
@@ -172,6 +196,13 @@ public class UserDAO {
 			return borrowrecord;
 				
 	 }
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 	 
 	 public static List<ReserveRecordBean> QueryReserveRecord(Integer userid) throws SQLException
 	 {
