@@ -287,7 +287,7 @@ public class UserServlet extends HttpServlet {
 	   
 	   
 	   
-		if(submt.equals(RequestAttribute.Return_Book)||submt.equals(RequestAttribute.Report_Loss))
+		if(submt.equals(RequestAttribute.Return_Book))
 		{
 		try {
 			List<BorrowRecordBean> list=UserDAO.QueryBorrowRecord(Integer.parseInt(userid));
@@ -306,6 +306,26 @@ public class UserServlet extends HttpServlet {
 			
 			
 		}
+		if(submt.equals(RequestAttribute.Report_Lose))
+		{
+		try {
+			List<BorrowRecordBean> list=UserDAO.QueryBorrowRecord(Integer.parseInt(userid));
+			request.setAttribute(MessageConstant.UserID, Integer.parseInt(userid));
+			request.setAttribute(MessageConstant.BorrowRecord, list);
+		    request.getRequestDispatcher(ViewConstant.ReturnOrLose_Book).forward(request, response);
+		
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
+			
+			
+		}
+		
 		
 		
 		
@@ -333,9 +353,10 @@ public class UserServlet extends HttpServlet {
 		try {
 			BorrowRecord br=UserDAO.getBorrowRecord(Integer.parseInt(borrowrecordid));
 	        int bookid2=br.getBookid();
-		    LoseRecord lr=new LoseRecord(Integer.parseInt(userid),bookid2);
+		    String time=GeneralSupport.getCurrentTime();
+	        LoseRecord lr=new LoseRecord(Integer.parseInt(userid),bookid2,time);
 	        UserDAO.AddLoseRecord(lr);
-	        LoseRecord lr1=UserDAO.getLoseRecord(Integer.parseInt(userid), bookid2);
+	        LoseRecord lr1=UserDAO.getLoseRecord(time);
 	        int loserecordid=lr1.getId();
 	        Book book1=AdminDao.getBook(bookid2);
 		    double price=book1.getPrice();

@@ -334,11 +334,11 @@ public class UserDAO {
 		   
 	   }
 	   
-	   public static LoseRecord getLoseRecord(Integer userid,Integer bookid) throws SQLException
+	   public static LoseRecord getLoseRecord(String time) throws SQLException
 	   {
 		   Session session=DBConnection.buildConection();
 		   Transaction tx=session.beginTransaction();
-		   LoseRecord lr=(LoseRecord) session.createQuery("from LoseRecord where userid="+userid+"and bookid="+bookid).uniqueResult();
+		   LoseRecord lr=(LoseRecord) session.createQuery("from LoseRecord where time='"+time+"'").uniqueResult();
 		
 		   session.close();
 		   return lr;

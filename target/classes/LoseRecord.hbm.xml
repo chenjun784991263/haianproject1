@@ -14,5 +14,9 @@
         <property name="bookid" type="int">
             <column name="BOOKID" />
         </property>
+         <property name="time" type="java.lang.String">
+            <column name="Time" />
+        </property>
+        
     </class>
 </hibernate-mapping>

@@ -20,11 +20,11 @@
 <li><form action=<%=UrlConstant.User_SERVLET %> method="post">
 <input type="hidden" name="userid" value="<%=user.getId() %>">
 <input type="submit" name="submit" value="ReturnBook"></form></li>
+
 <li>
 <form action=<%=UrlConstant.User_SERVLET %> method="post">
 <input type="hidden" name="userid" value="<%=user.getId() %>">
-<input type="submit" name="submit" value="LossBook"></form>
-
+<input type="submit" name="submit" value="LoseBook"></form>
 </li>
 <li>
 <form action=<%=UrlConstant.User_SERVLET %> method="post">

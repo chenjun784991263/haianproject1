@@ -15,15 +15,16 @@ public class Test {
 //	   System.out.println(c1.compareTo(c3));
 //	   System.out.println(c1.compareTo(c4));
 //		
-		String time1="2019/01/24";
-		String time2="2019/01/14";
-		Date date1=GeneralSupport.getTime(time1);
-		Date date2=GeneralSupport.getTime(time2);
-		int length=GeneralSupport.differentDaysByMillisecond(date1, date2);
-		System.out.println(length);
+//		String time1="2019/01/24";
+//		String time2="2019/01/14";
+//		Date date1=GeneralSupport.getTime(time1);
+//		Date date2=GeneralSupport.getTime(time2);
+//		int length=GeneralSupport.differentDaysByMillisecond(date1, date2);
+//		System.out.println(length);
+//	   
 	   
-	   
-	   
+	   System.out.println(GeneralSupport.getCurrentTime());
+	
 	}
 	
 	

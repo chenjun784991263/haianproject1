@@ -12,9 +12,9 @@ public class RequestAttribute {
     public static final String Check_Reports="CheckReports";
     public static final String Borrow_Book="BorrowBook";
     public static final String Return_Book="ReturnBook";
-    public static final String _Return_Book="returnbook";
+    public static final String Report_Lose="LoseBook";
     public static final String Search_Book="SearchBook";
-    public static final String Report_Loss="ReportLoss";
+  
     public static final String Add_User="Add_User";
     public static final String _Add_User="AddUser";
     public static final String _Edit_User="EditUser";
@@ -86,6 +86,7 @@ public class RequestAttribute {
     public static final String ApproveReserve="approvereserve";
     public static final String RejectReserve="rejectreserve";
 
+    public static final String _Return_Book="returnbook";
     
     public static final String ManageBorrowRequest="ManageBorrowRequest";
     public static final String ManageReserveRequest="ManageReserveRequest";

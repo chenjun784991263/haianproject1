@@ -22,6 +22,17 @@ public class GeneralSupport {
 	     return date;
 	}
 	
+	public static String getCurrentTime() {
+		 DateFormat df = new SimpleDateFormat("yyyy/MM/dd/HH/mm/ss");
+	     Date dateobj = new Date();
+	     String date=df.format(dateobj).toString();
+	   
+	     return date;
+	}
+	
+	
+	
+	
 	public static String getDate(Calendar cal) {
 		 DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
 	     Date date=cal.getTime();
