@@ -44,7 +44,7 @@ public class ApproveBorrowEmail {
 	     message.setFrom(new InternetAddress(user));  
 	     message.addRecipient(Message.RecipientType.TO,new InternetAddress(to));  
 	     message.setSubject("Demo email from Adam");  
-	     message.setText("Congralutions,Dear User,your borrow request For "+bookname+  " book is approved by the admin");  
+	     message.setText("Congratulations,Dear User,your borrow request For "+bookname+  " book is approved by the admin");  
 	       
 	    //send the message  
 	     Transport.send(message);  
