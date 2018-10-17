@@ -14,5 +14,8 @@
         <property name="bookid" type="int">
             <column name="BOOKID" />
         </property>
+         <property name="flag" type="int">
+            <column name="FLAG" />
+        </property>
     </class>
 </hibernate-mapping>

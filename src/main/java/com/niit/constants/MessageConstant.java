@@ -48,5 +48,7 @@ public class MessageConstant {
     public static final String message4="message4";
     
     public static final String  StockList="stocklist";
+	public static final String BookID = "bookid";
+	public static final String BorrowLength="borrowlength";
     
 }

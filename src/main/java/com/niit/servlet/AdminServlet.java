@@ -17,6 +17,7 @@ import com.niit.constants.RequestAttribute;
 import com.niit.constants.UrlConstant;
 import com.niit.constants.ViewConstant;
 import com.niit.dao.AdminDao;
+import com.niit.dao.UserDAO;
 import com.niit.model.Account;
 import com.niit.model.Book;
 import com.niit.model.Publisher;
@@ -25,7 +26,12 @@ import com.niit.model.Type;
 import com.niit.model.User;
 import com.niit.service.AdminService;
 import com.niit.service.UserService;
+import com.niit.supportclasses.ApproveBorrowEmail;
+import com.niit.supportclasses.ApproveReserveEmail;
 import com.niit.supportclasses.GeneralSupport;
+import com.niit.supportclasses.RejectBorrowEmail;
+import com.niit.supportclasses.RejectReserveEmail;
+import com.sun.mail.iap.ResponseInputStream;
 
 
 /**
@@ -83,6 +89,10 @@ public class AdminServlet extends HttpServlet {
         String quantity=request.getParameter("quantity");
         String stockid=request.getParameter("stockid");
         String numtoadd=request.getParameter("numtoadd");
+        String bookid=request.getParameter("bookid");
+        String borrowlength=request.getParameter("borrowlength");
+        String  borrowrecordid=request.getParameter("borrowrecordid");
+        String reserverecordid=request.getParameter("reservereocordid");
         
 		if(st.equalsIgnoreCase(UrlConstant.Login_Admin))
 		{
@@ -435,8 +445,8 @@ public class AdminServlet extends HttpServlet {
 		    if(flag==MessageConstant.Book_Create_Success)
 		    {
 		    	Book book1=AdminDao.getBook(bookname, releasingtime);
-		    	int bookid=book1.getId();
-		    	Stock  stock=new Stock(bookid,quantity,GeneralSupport.getDate());
+		    	int bookid1=book1.getId();
+		    	Stock  stock=new Stock(bookid1,quantity,GeneralSupport.getDate());
 		    	AdminDao.addStock(stock);
 		    	
 		    	request.getRequestDispatcher(ViewConstant.Manage_Book).forward(request, response);
@@ -611,6 +621,118 @@ public class AdminServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		
+		
+		
+	}
+	
+	if(st.equals(RequestAttribute.ManageBorrowRequest))
+	{
+		
+		request.getRequestDispatcher(ViewConstant.ManageBorrowRequest).forward(request, response);
+		
+		
+		
+		
+	}
+	
+	if(st.equals(RequestAttribute.ApproveReserve))
+
+	{    User u;
+		try {
+			u = AdminDao.getUser(Integer.parseInt(userid));
+			ApproveReserveEmail.sendEmail(u, bookname);
+			AdminDao.changereserverecordflag(Integer.parseInt(borrowrecordid));
+		    request.getRequestDispatcher(ViewConstant.Admin_WELCOMEPAGE).forward(request, response);
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		
+	}
+	
+	if(st.equals(RequestAttribute.RejectReserve))
+	{
+		User u;
+		try {
+			u = AdminDao.getUser(Integer.parseInt(userid));
+			RejectReserveEmail.sendEmail(u,bookname);
+			UserDAO.DeleteReserveRecord(Integer.parseInt(reserverecordid));
+			request.getRequestDispatcher(ViewConstant.Admin_WELCOMEPAGE).forward(request, response);
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	
+		
+		
+		
+		
+		
+	}
+	
+	if(st.equals(RequestAttribute.ManageReserveRequest))
+	{
+		
+		request.getRequestDispatcher(ViewConstant.ManageReserveRequest).forward(request, response);
+		
+		
+		
+		
+	}
+	
+	if(st.equals(RequestAttribute.ApproveBorrow))
+
+	{    User u;
+		try {
+			u = AdminDao.getUser(Integer.parseInt(userid));
+			ApproveBorrowEmail.sendEmail(u, bookname);
+			AdminDao.changeborrowrecordflag(Integer.parseInt(borrowrecordid));
+		    request.getRequestDispatcher(ViewConstant.Admin_WELCOMEPAGE).forward(request, response);
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		
+	}
+	
+	if(st.equals(RequestAttribute.RejectBorrow))
+	{
+		User u;
+		try {
+			u = AdminDao.getUser(Integer.parseInt(userid));
+			RejectBorrowEmail.sendEmail(u,bookname);
+			UserDAO.DeleteBorrowRecord(Integer.parseInt(reserverecordid));
+			request.getRequestDispatcher(ViewConstant.Admin_WELCOMEPAGE).forward(request, response);
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	
+		
 		
 		
 		

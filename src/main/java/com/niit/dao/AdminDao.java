@@ -10,11 +10,14 @@ import org.hibernate.Transaction;
 
 import com.niit.Bean.AccountBean;
 import com.niit.Bean.BookBean;
+import com.niit.Bean.BorrowRecordBean;
+import com.niit.Bean.ReserveRecordBean;
 import com.niit.Bean.StockBean;
 import com.niit.constants.MessageConstant;
 import com.niit.dbutil.DBConnection;
 import com.niit.model.Account;
 import com.niit.model.Book;
+import com.niit.model.BorrowRecord;
 import com.niit.model.Publisher;
 import com.niit.model.Stock;
 import com.niit.model.Type;
@@ -533,10 +536,85 @@ public static void AddAccount(Account a) throws SQLException
 	   
    }
    
+   public static List<BorrowRecordBean> QueryBorrowRecord() throws SQLException
+	 {
+		 Session session=DBConnection.buildConection();
+			Transaction tx=session.beginTransaction();
+			List<BorrowRecordBean>borrowrecord=new ArrayList<BorrowRecordBean>();
+			List<Object[]> list=session.createSQLQuery("SELECT br.id,u.id as 'userid',u.name as 'username',b.name as 'bookname',br.borrowdate,br.shouldreturndate FROM t_borrowrecord br LEFT JOIN t_book b ON br.bookid=b.id left join t_user u on u.id=br.userid WHERE br.flag=0").list();
+			for(Object[] row:list)	
+			{
+				BorrowRecordBean brb=new BorrowRecordBean();
+				brb.setId(Integer.parseInt(row[0].toString()));
+				brb.setUserid(Integer.parseInt(row[1].toString()));
+				brb.setUsername(row[2].toString());
+				brb.setBookname(row[3].toString());
+			    brb.setBorrowdate(row[4].toString());
+			    brb.setShouldreturndate(row[5].toString());
+		        borrowrecord.add(brb);
+			
+			}
+			session.close();
+			return borrowrecord;
+				
+	 }
+     public static List<ReserveRecordBean> QueryReserveRecord() throws SQLException
+	 {
+		 Session session=DBConnection.buildConection();
+			Transaction tx=session.beginTransaction();
+			List<ReserveRecordBean>reserverecord=new ArrayList<ReserveRecordBean>();
+			List<Object[]> list=session.createSQLQuery("SELECT r.id,u.id as 'userid',u.name AS 'username',b.name AS 'bookname' FROM t_reserverecord r LEFT JOIN t_user u ON r.USERID=u.id LEFT JOIN t_book b ON b.id=r.BOOKID where r.flag=0").list();
+			for(Object[] row:list)	
+			{
+				ReserveRecordBean rr=new ReserveRecordBean();
+				rr.setId(Integer.parseInt(row[0].toString()));
+				rr.setUserid(Integer.parseInt(row[1].toString()));
+				rr.setUsername(row[2].toString());
+				rr.setBookname(row[3].toString());
+			  
+		        reserverecord.add(rr);
+			
+			}
+			session.close();
+			return reserverecord;
+				
+	 }
    
    
    
    
+	 
+   public static void  changeborrowrecordflag(Integer borrowrecordid) throws SQLException
+   {
+	   Session session=DBConnection.buildConection();
+	   Transaction tx=session.beginTransaction();
+	   BorrowRecord bb=session.get(BorrowRecord.class, borrowrecordid);
+	   bb.setFlag(1);
+	   session.update(bb);
+	   tx.commit();
+	   session.close();
+	   
+	   
+	   
+	   
+	   
+   }
+   
+   public static void  changereserverecordflag(Integer reserverecordid) throws SQLException
+   {
+	   Session session=DBConnection.buildConection();
+	   Transaction tx=session.beginTransaction();
+	   BorrowRecord bb=session.get(BorrowRecord.class, reserverecordid);
+	   bb.setFlag(1);
+	   session.update(bb);
+	   tx.commit();
+	   session.close();
+	   
+	   
+	   
+	   
+	   
+   }
    
 
 

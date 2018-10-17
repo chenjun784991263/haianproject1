@@ -37,6 +37,6 @@ public class ViewConstant {
     public static final String CancelReserve="CancelReserve.jsp";
     
     public static final String AddStock="addstock.jsp";
-    
-    
+    public static final String ManageBorrowRequest="manageborrowrequest.jsp";
+    public static final String ManageReserveRequest="managereserverequest.jsp";
 }

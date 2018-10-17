@@ -75,6 +75,51 @@ float:left;
 	
 	
 }
+ #right-middle{
+ 
+ width:1149px;
+ height:400px;
+ background-color:#ba1c541a
+ 
+ 
+ 
+ 
+ 
+ 
+ }
+#borrowreq{
+	
+	
+	position:relative;
+	top:160px;
+	
+	
+	
+	
+}
+
+#reservereq{
+	position:relative;
+	top:160px;
+	
+	
+	
+}
+
+#borrowreq td{
+	
+border:1px solid blue;
+	
+	
+	
+}
+
+#reservereq td{
+border:1px solid blue;
+	
+	
+}
+
 
 
 

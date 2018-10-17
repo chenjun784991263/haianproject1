@@ -156,7 +156,7 @@ public class UserDAO {
 		 Session session=DBConnection.buildConection();
 			Transaction tx=session.beginTransaction();
 			Set<BorrowRecord>borrowrecord=new HashSet<BorrowRecord>();
-			List<Object[]> list=session.createSQLQuery("SELECT * FROM t_borrowrecord WHERE SHOULDRETURNDATE < CURRENT_DATE").list();
+			List<Object[]> list=session.createSQLQuery("SELECT *FROM t_borrowrecord WHERE SHOULDRETURNDATE=CURRENT_DATE and flag=1").list();
 			for(Object[] row:list)	
 			{
 				BorrowRecord bb=new BorrowRecord();
@@ -178,7 +178,7 @@ public class UserDAO {
 		 Session session=DBConnection.buildConection();
 			Transaction tx=session.beginTransaction();
 			List<BorrowRecordBean>borrowrecord=new ArrayList<BorrowRecordBean>();
-			List<Object[]> list=session.createSQLQuery("SELECT br.id,b.name,b.author,b.price,b.releasingtime,br.borrowdate,br.shouldreturndate FROM t_borrowrecord br LEFT JOIN t_book b ON br.bookid=b.id  WHERE br.userid="+userid).list();
+			List<Object[]> list=session.createSQLQuery("SELECT br.id,b.name,b.author,b.price,b.releasingtime,br.borrowdate,br.shouldreturndate FROM t_borrowrecord br LEFT JOIN t_book b ON br.bookid=b.id  WHERE br.flag=1 and"+" br.userid="+userid).list();
 			for(Object[] row:list)	
 			{
 				BorrowRecordBean brb=new BorrowRecordBean();
@@ -197,7 +197,7 @@ public class UserDAO {
 				
 	 }
 	 
-	 
+	
 	 
 	 
 	 

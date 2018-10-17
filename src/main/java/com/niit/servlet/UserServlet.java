@@ -36,6 +36,7 @@ import com.niit.model.User;
 import com.niit.service.UserService;
 import com.niit.supportclasses.EmailConfig;
 import com.niit.supportclasses.GeneralSupport;
+import com.niit.supportclasses.RejectBorrowEmail;
 
 /**
  * Servlet implementation class AdminServlet
@@ -180,11 +181,9 @@ public class UserServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
-			
-			
-			
 		}
+			
+		
 	   if(submt.equals(RequestAttribute._Return_Book)){
 		  
 		  
@@ -214,6 +213,7 @@ public class UserServlet extends HttpServlet {
 		    	UserDAO.DeleteBorrowRecord(Integer.parseInt(borrowrecordid));
 		    	Stock stock=UserDAO.getStock(bookid1);
 		    	UserDAO.changeStockForReturnOrCancelReserve(stock);
+		    	request.setAttribute(MessageConstant.User, AdminDao.getUser(Integer.parseInt(userid)));
 		    	request.getRequestDispatcher(ViewConstant.User_WELCOMEPAGE).forward(request, response);
 		    	
 		    }

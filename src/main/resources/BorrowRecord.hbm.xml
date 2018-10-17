@@ -20,5 +20,9 @@
         <property name="shouldreturndate" type="java.lang.String">
             <column name="SHOULDRETURNDATE" />
         </property>
+           <property name="flag" type="int">
+            <column name="FLAG" />
+        </property>
+        
     </class>
 </hibernate-mapping>

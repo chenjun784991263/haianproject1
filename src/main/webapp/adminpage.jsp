@@ -1,3 +1,6 @@
+<%@page import="com.niit.model.Book"%>
+<%@page import="com.niit.model.User"%>
+<%@page import="com.niit.constants.MessageConstant"%>
 <%@page import="com.niit.dao.AdminDao"%>
 <%@page import="com.niit.constants.UrlConstant"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -85,6 +88,13 @@
 			<form action=<%=UrlConstant.Admin_SERVLET%> method="post"><input type="submit" name="submit" value="AddStock"></form>
 			</div>
 			
+			<div class="div2">
+			<form action=<%=UrlConstant.Admin_SERVLET%> method="post"><input type="submit" name="submit" value="ManageBorrowRequest"></form>
+			</div>
+			
+			<div class="div2">
+			<form action=<%=UrlConstant.Admin_SERVLET%> method="post"><input type="submit" name="submit" value="ManageReserveRequest"></form>
+			</div>
 			
 			
 		</div>
@@ -113,11 +123,9 @@
 		</div>
 		<hr>
 		
-		
-		
 	</div>
 
-
+    
 
 
 

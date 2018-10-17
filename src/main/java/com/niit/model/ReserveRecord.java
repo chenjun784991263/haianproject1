@@ -5,6 +5,8 @@ public class ReserveRecord {
 	private int id;
 	private int userid;
 	private int bookid;
+	private int flag=0;
+	
 	public int getId() {
 		return id;
 	}
@@ -33,6 +35,12 @@ public class ReserveRecord {
 		
 		
 		
+	}
+	public int getFlag() {
+		return flag;
+	}
+	public void setFlag(int flag) {
+		this.flag = flag;
 	}
 	
 	

@@ -9,7 +9,7 @@ public class BorrowRecord {
 	private int bookid;
 	private String borrowdate;
 	private String shouldreturndate;//default add 90 in borrowdate
-	
+	private int flag=0;
 	public int getId() {
 		return id;
 	}
@@ -51,6 +51,12 @@ public class BorrowRecord {
 		this.borrowdate=borrowdate2;
 		this.shouldreturndate=shouldreturndate2;
 
+	}
+	public int getFlag() {
+		return flag;
+	}
+	public void setFlag(int flag) {
+		this.flag = flag;
 	}
 	
 	

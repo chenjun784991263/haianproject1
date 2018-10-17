@@ -79,5 +79,15 @@ public class RequestAttribute {
     public static final String Add_Stock="AddStock";
     
     public static final String _Add_Stock="addstock";
+ 
+    public static final String ApproveBorrow="approveborrow";
+    public static final String RejectBorrow="rejectborrow";
+    
+    public static final String ApproveReserve="approvereserve";
+    public static final String RejectReserve="rejectreserve";
+
+    
+    public static final String ManageBorrowRequest="ManageBorrowRequest";
+    public static final String ManageReserveRequest="ManageReserveRequest";
     
 }

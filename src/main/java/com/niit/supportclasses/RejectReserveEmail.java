@@ -1,4 +1,4 @@
-package com.niit.quartz;
+package com.niit.supportclasses;
 
 import java.util.Properties;
 
@@ -14,9 +14,9 @@ import com.niit.model.User;
 
 
 
-public class WarningEmail {
+public class RejectReserveEmail {
 
-	public static void sendEmail(User u) {
+	public static void sendEmail(User u,String bookname) {
 	  int port=25;
 	  String host="smtp.qq.com";  
 	  final String user="784991263@qq.com";//change accordingly  
@@ -44,7 +44,7 @@ public class WarningEmail {
 	     message.setFrom(new InternetAddress(user));  
 	     message.addRecipient(Message.RecipientType.TO,new InternetAddress(to));  
 	     message.setSubject("Demo email from Adam");  
-	     message.setText("Dear User,you have a book that will be overdue! please return it today");  
+	     message.setText("Sorry,Dear User,your reserve request for "+bookname +" is rejected by the admin");  
 	       
 	    //send the message  
 	     Transport.send(message);  
