@@ -16,6 +16,8 @@ public class MessageConstant {
 	public static final String User="user";
 	public static final String Type="type";
 	public static final String Book="Book";
+	public static final String Stock="stock";
+	
 	public static final String Publisher="publisher";
     public static final String Admin_UserName="Admin";
     public static final String Admin_PassWord="888888";
@@ -50,5 +52,6 @@ public class MessageConstant {
     public static final String  StockList="stocklist";
 	public static final String BookID = "bookid";
 	public static final String BorrowLength="borrowlength";
+	public static final String Show = "show";
     
 }

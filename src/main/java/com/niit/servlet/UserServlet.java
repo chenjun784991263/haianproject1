@@ -207,7 +207,7 @@ public class UserServlet extends HttpServlet {
 		   
 		    	Account account=UserDAO.getAcccount(Integer.parseInt(userid));
 		    	int accountid=account.getId();
-		    	AccountRecord ar=new AccountRecord(bookid1,accountid,timelength,timelength*0.5);
+		    	AccountRecord ar=new AccountRecord(accountid,bookid1,timelength,timelength*1);
 		    	UserDAO.addAccountRecord(ar);
 		    	UserDAO.fine(accountid, ar.getOverduefine());
 		    	UserDAO.DeleteBorrowRecord(Integer.parseInt(borrowrecordid));
@@ -432,6 +432,7 @@ public class UserServlet extends HttpServlet {
 		
 		
 	}
+	
 	
 
 	

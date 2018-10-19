@@ -1,11 +1,14 @@
 package com.niit.supportclasses;
 
+import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
 
+import com.niit.dao.AdminDao;
+
 public class Test {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 		
 //	   Calendar c1=GeneralSupport.getCalTime("2016/03/12");
 //	   Calendar c2=GeneralSupport.getCalTime("2016/03/12");
@@ -23,8 +26,8 @@ public class Test {
 //		System.out.println(length);
 //	   
 	   
-	   System.out.println(GeneralSupport.getCurrentTime());
-	
+	   System.out.println(AdminDao.queryStock());
+	  
 	}
 	
 	

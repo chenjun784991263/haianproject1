@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-9-21 16:04:46 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.niit.model.Account" table="T_ACCOUNT">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+        <property name="userid" type="int">
+            <column name="USERID" />
+        </property>
+        <property name="balance" type="double">
+            <column name="BALANCE" />
+        </property>
+    </class>
+</hibernate-mapping>

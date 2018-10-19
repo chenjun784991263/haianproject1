@@ -91,4 +91,22 @@ public class RequestAttribute {
     public static final String ManageBorrowRequest="ManageBorrowRequest";
     public static final String ManageReserveRequest="ManageReserveRequest";
     
+    public static final String ShowReport="ShowReport";
+    
+    
+    public static final String TotalBooks="totalbooks";
+    public static final String BorrowedBook="borrowedbooks";
+    public static final String LostBook="lostbooks";
+    public static final String ReservedBook="reservedbooks";
+    public static final String LateReturnBook="latereturnbooks";
+    public static final String FinedBooks="finedbooks";
+    
+  
+    
+    
+    
+    
+    
+    
+    
 }

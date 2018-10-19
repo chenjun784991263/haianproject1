@@ -9,6 +9,7 @@ public class StockBean {
 	private String releasingtime;
 	private double price;
 	private String contenttype;
+	private int quantity;
 	public int getId() {
 		return id;
 	}
@@ -44,6 +45,12 @@ public class StockBean {
 	}
 	public void setContenttype(String contenttype) {
 		this.contenttype = contenttype;
+	}
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 	
 	

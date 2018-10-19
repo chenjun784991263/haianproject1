@@ -20,7 +20,7 @@
         <property name="overduelength" type="int">
             <column name="OVERDUELENGTH" />
         </property>
-        <property name="overduefine" type="double">
+        <property name="overduefine" type="int">
             <column name="OVERDUEFINE" />
         </property>
         <property name="losefine" type="double">

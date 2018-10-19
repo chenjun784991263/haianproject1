@@ -501,7 +501,7 @@ public static void AddAccount(Account a) throws SQLException
 	   Session session=DBConnection.buildConection();
 	   Transaction tx=session.beginTransaction();
 	   List<StockBean>stocklist=new ArrayList<StockBean>();
-		List<Object[]> list=session.createSQLQuery("SELECT s.id,b.name,b.author,b.releasingtime,b.price,b.contenttype FROM t_stock s LEFT JOIN t_book b ON s.bookid=b.id").list();
+		List<Object[]> list=session.createSQLQuery("SELECT s.id,b.name,b.author,b.releasingtime,b.price,b.contenttype,s.quantity FROM t_stock s LEFT JOIN t_book b ON s.bookid=b.id").list();
 		for(Object[] row:list) {
 		    StockBean sb=new StockBean();
 			sb.setId(Integer.parseInt(row[0].toString()));
@@ -510,6 +510,7 @@ public static void AddAccount(Account a) throws SQLException
 			sb.setReleasingtime(row[3].toString());
 			sb.setPrice(Double.parseDouble(row[4].toString()));
 			sb.setContenttype(row[5].toString());
+			sb.setQuantity(Integer.parseInt(row[6].toString()));
 			stocklist.add(sb);
 		}
 		session.close();

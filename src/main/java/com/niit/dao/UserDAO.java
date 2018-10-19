@@ -2,11 +2,18 @@ package com.niit.dao;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import com.niit.Bean.BorrowRecordBean;
+import com.niit.Bean.FineRecordBean;
+
+import com.niit.Bean.LoseRecordBean;
+
+import com.niit.Bean.OverdueRecordBean;
 import com.niit.Bean.ReserveRecordBean;
 
 import org.hibernate.Query;
@@ -197,7 +204,56 @@ public class UserDAO {
 				
 	 }
 	 
+	 public static List<BorrowRecordBean> QueryBorrowRecord() throws SQLException
+	 {
+		 Session session=DBConnection.buildConection();
+			Transaction tx=session.beginTransaction();
+			List<BorrowRecordBean>borrowrecord=new ArrayList<BorrowRecordBean>();
+			List<Object[]> list=session.createSQLQuery("SELECT br.id,b.name as 'bookname',b.author,b.price,b.releasingtime,br.borrowdate,br.shouldreturndate,u.name as 'username' FROM t_borrowrecord br LEFT JOIN t_book b ON br.bookid=b.id left join t_user u  on br.userid=u.id  WHERE br.flag=1").list();
+			for(Object[] row:list)	
+			{
+				BorrowRecordBean brb=new BorrowRecordBean();
+				brb.setId(Integer.parseInt(row[0].toString()));
+				brb.setBookname(row[1].toString());
+				brb.setAuthor(row[2].toString());
+				brb.setPrice(Double.parseDouble(row[3].toString()));
+				brb.setReleasingtime(row[4].toString());
+				brb.setBorrowdate(row[5].toString());
+			    brb.setShouldreturndate(row[6].toString());
+		        brb.setUsername(row[7].toString());
+			    borrowrecord.add(brb);
+			
+			}
+			session.close();
+			return borrowrecord;
+				
+	 }
+	 
 	
+	 public static List<LoseRecordBean> QueryLoseRecord() throws SQLException
+	 {
+		 Session session=DBConnection.buildConection();
+			Transaction tx=session.beginTransaction();
+			List<LoseRecordBean>loserecord=new ArrayList<LoseRecordBean>();
+			List<Object[]> list=session.createSQLQuery("SELECT u.name AS 'username',b.name AS 'bookname',b.author,b.price,b.releasingtime,lr.time FROM t_loserecord lr LEFT JOIN t_user u ON lr.userid=u.id LEFT JOIN t_book b ON lr.bookid=b.id").list();
+			for(Object[] row:list)	
+			{
+				LoseRecordBean lr=new LoseRecordBean();
+				lr.setUsername(row[0].toString());
+				lr.setBookname(row[1].toString());
+				lr.setAuthor(row[2].toString());
+				lr.setPrice(Double.parseDouble(row[3].toString()));
+				lr.setReleasingtime(row[4].toString());
+				lr.setLosetime(row[5].toString());
+		   
+			    loserecord.add(lr);
+			
+			}
+			session.close();
+			return loserecord;
+				
+	 }
+	 
 	 
 	 
 	 
@@ -228,10 +284,85 @@ public class UserDAO {
 				
 	 }
 	 
+	 public static List<ReserveRecordBean> QueryReserveRecord() throws SQLException
+	 {
+		 Session session=DBConnection.buildConection();
+			Transaction tx=session.beginTransaction();
+			List<ReserveRecordBean>reserverecord=new ArrayList<ReserveRecordBean>();
+			List<Object[]> list=session.createSQLQuery("SELECT u.name as 'username',b.name as 'bookname',b.author,b.price,b.releasingtime FROM t_reserverecord r LEFT JOIN t_book b ON r.bookid=b.id LEFT JOIN t_user u ON r.userid=u.id").list();
+			for(Object[] row:list)	
+			{
+				ReserveRecordBean rrb=new ReserveRecordBean();
+				rrb.setUsername(row[0].toString());
+				rrb.setBookname(row[1].toString());
+				rrb.setAuthor(row[2].toString());
+				rrb.setPrice(Double.parseDouble(row[3].toString()));
+				rrb.setReleasingtime(row[4].toString());
+			
+		        reserverecord.add(rrb);
+			
+			}
+			session.close();
+			return reserverecord;
+				
+	 }
 	 
 	 
+	 public static List<OverdueRecordBean> QueryOverdueRecord() throws SQLException
+	 {
+		 Session session=DBConnection.buildConection();
+			Transaction tx=session.beginTransaction();
+			List<OverdueRecordBean>overduerecord=new ArrayList<OverdueRecordBean>();
+			List<Object[]> list=session.createSQLQuery("SELECT u.name AS 'username',b.name AS 'bookname',b.author,b.price,b.releasingtime ,br.shouldreturndate FROM t_borrowrecord br LEFT JOIN t_user u ON u.id=br.userid LEFT JOIN t_book b ON b.id=br.bookid  WHERE SHOULDRETURNDATE<CURRENT_DATE").list();
+			for(Object[] row:list)	
+			{
+				OverdueRecordBean or=new OverdueRecordBean();
+				or.setUsername(row[0].toString());
+				or.setBookname(row[1].toString());
+				or.setAuthor(row[2].toString());
+			    or.setPrice(Double.parseDouble(row[3].toString()));
+				or.setReleasingtime(row[4].toString());
+			    or.setShoulddreturndate(row[5].toString());
+		        Date now=GeneralSupport.getTime(GeneralSupport.getDate());
+			    Date shouldreturndate=GeneralSupport.getTime((row[5].toString()));
+			    int overduedays=GeneralSupport.differentDaysByMillisecond(shouldreturndate, now);
+			    or.setOverduedays(overduedays);
+			    
+			    overduerecord.add(or);
+			
+			}
+			session.close();
+			return overduerecord;
+				
+	 }
+	 
+	 public static List<FineRecordBean> QueryFineRecord() throws SQLException
+	 {
+		 Session session=DBConnection.buildConection();
+			Transaction tx=session.beginTransaction();
+			List<FineRecordBean>finerecord=new ArrayList<FineRecordBean>();
+			List<String> namelist=session.createSQLQuery("SELECT u.name FROM t_user u ,(SELECT a.userid FROM t_account a ,t_accountrecord ar WHERE a.id=ar.accountid and ar.loserecordid !=0) t WHERE u.id=t.userid").list();
+			List<Object[]> list=session.createSQLQuery("SELECT b.name,b.author,b.price,b.releasingtime,ar.overduelength,ar.overduefine FROM t_accountrecord ar LEFT JOIN t_book b ON ar.BOOKID=b.id WHERE ar.LOSERECORDID=0").list();
+	 
+			for(int i=0;i<namelist.size();i++)
+			{
+				FineRecordBean fr=new FineRecordBean();
+				fr.setUsername(namelist.get(i));
+				fr.setBookname(list.get(i)[0].toString());
+			    fr.setAuthor(list.get(i)[1].toString());
+			    fr.setPrice(Double.parseDouble(list.get(i)[2].toString()));
+			    fr.setReleasingtime(list.get(i)[3].toString());
+			    fr.setOverduelength(Integer.parseInt(list.get(i)[4].toString()));
+			    fr.setOverduefine(Integer.parseInt(list.get(i)[5].toString()));
+		        finerecord.add(fr);
+			}
+			session.close();
+			return finerecord;
+			
+			
 	 
 	 
+	 }
 	 public static BorrowRecord getBorrowRecord(Integer id) throws SQLException
 	 {
 		 Session session=DBConnection.buildConection();

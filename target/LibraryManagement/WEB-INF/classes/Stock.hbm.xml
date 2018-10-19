@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-9-29 9:57:27 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.niit.model.Stock" table="T_STOCK">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+        <property name="bookid" type="int">
+            <column name="BOOKID" />
+        </property>
+        <property name="quantity" type="int">
+            <column name="QUANTITY" />
+        </property>
+        <property name="modifydate" type="java.lang.String">
+            <column name="MODIFYDATE" />
+        </property>
+    </class>
+</hibernate-mapping>

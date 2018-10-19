@@ -7,7 +7,7 @@ public class AccountRecord {
 	private int bookid;
 	private int loserecordid;
 	private int overduelength;
-	private double overduefine;
+	private int overduefine;
 	private double losefine;
 	public int getId() {
 		return id;
@@ -43,7 +43,7 @@ public class AccountRecord {
 	public double getOverduefine() {
 		return overduefine;
 	}
-	public void setOverduefine(double overduefine) {
+	public void setOverduefine(int  overduefine) {
 		this.overduefine = overduefine;
 	}
 	public double getLosefine() {
@@ -56,7 +56,7 @@ public class AccountRecord {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public AccountRecord(int accountid, int bookid, int timelength, double d) {
+	public AccountRecord(int accountid, int bookid, int timelength, int d) {
 
 		this.bookid=bookid;
 		this.accountid=accountid;

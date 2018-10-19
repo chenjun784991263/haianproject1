@@ -56,70 +56,70 @@
 <ul class="clear">
 <li><div><a href=""><img src="img/1.jpg" /></a>
 <div><form  style="display:inline"><input type="hidden" name="bookid" value="">
-<input style="width:78px;" type="submit" name="submit" value="Detials"></form>
+<input style="width:78px;" type="submit" name="submit" value="Details"></form>
 <form  style="display:inline"><input type="hidden" name="bookid" value="">
 <input style="width:78px;" type="submit" name="submit" value="Borrow">
 </form></div></div></li>
 
 <li><div><a href=""><img src="img/2.jpg" /></a>
 <div><form  style="display:inline"><input type="hidden" name="bookid" value="">
-<input style="width:78px;" type="submit" name="submit" value="Detials"></form>
+<input style="width:78px;" type="submit" name="submit" value="Details"></form>
 <form  style="display:inline"><input type="hidden" name="bookid" value="">
 <input style="width:78px;" type="submit" name="submit" value="Borrow">
 </form></div></div></li>
 
 <li><div><a href=""><img src="img/3.jpg" /></a>
 <div><form  style="display:inline"><input type="hidden" name="bookid" value="">
-<input style="width:78px;" type="submit" name="submit" value="Detials"></form>
+<input style="width:78px;" type="submit" name="submit" value="Details"></form>
 <form  style="display:inline"><input type="hidden" name="bookid" value="">
 <input style="width:78px;" type="submit" name="submit" value="Borrow">
 </form></div></div></li>
 
 <li><div><a href=""><img src="img/4.jpg" /></a>
 <div><form  style="display:inline"><input type="hidden" name="bookid" value="">
-<input style="width:78px;" type="submit" name="submit" value="Detials"></form>
+<input style="width:78px;" type="submit" name="submit" value="Details"></form>
 <form  style="display:inline"><input type="hidden" name="bookid" value="">
 <input style="width:78px;" type="submit" name="submit" value="Borrow">
 </form></div></div></li>
 
 <li><div><a href=""><img src="img/5.jpg" /></a>
 <div><form  style="display:inline"><input type="hidden" name="bookid" value="">
-<input style="width:78px;" type="submit" name="submit" value="Detials"></form>
+<input style="width:78px;" type="submit" name="submit" value="Details"></form>
 <form  style="display:inline"><input type="hidden" name="bookid" value="">
 <input style="width:78px;" type="submit" name="submit" value="Borrow">
 </form></div></div></li>
 
 <li><div><a href=""><img src="img/6.jpg" /></a>
 <div><form  style="display:inline"><input type="hidden" name="bookid" value="">
-<input style="width:78px;" type="submit" name="submit" value="Detials"></form>
+<input style="width:78px;" type="submit" name="submit" value="Details"></form>
 <form  style="display:inline"><input type="hidden" name="bookid" value="">
 <input style="width:78px;" type="submit" name="submit" value="Borrow">
 </form></div></div></li>
 
 <li><div><a href=""><img src="img/7.jpg" /></a>
 <div><form  style="display:inline"><input type="hidden" name="bookid" value="">
-<input style="width:78px;" type="submit" name="submit" value="Detials"></form>
+<input style="width:78px;" type="submit" name="submit" value="Details"></form>
 <form  style="display:inline"><input type="hidden" name="bookid" value="">
 <input style="width:78px;" type="submit" name="submit" value="Borrow">
 </form></div></div></li>
 
 <li><div><a href=""><img src="img/8.jpg" /></a>
 <div><form  style="display:inline"><input type="hidden" name="bookid" value="">
-<input style="width:78px;" type="submit" name="submit" value="Detials"></form>
+<input style="width:78px;" type="submit" name="submit" value="Details"></form>
 <form  style="display:inline"><input type="hidden" name="bookid" value="">
 <input style="width:78px;" type="submit" name="submit" value="Borrow">
 </form></div></div></li>
 
 <li><div><a href=""><img src="img/9.jpg" /></a>
 <div><form  style="display:inline"><input type="hidden" name="bookid" value="">
-<input style="width:78px;" type="submit" name="submit" value="Detials"></form>
+<input style="width:78px;" type="submit" name="submit" value="Details"></form>
 <form  style="display:inline"><input type="hidden" name="bookid" value="">
 <input style="width:78px;" type="submit" name="submit" value="Borrow">
 </form></div></div></li>
 
 <li><div><a href=""><img src="img/10.jpg" /></a>
 <div><form  style="display:inline"><input type="hidden" name="bookid" value="">
-<input style="width:78px;" type="submit" name="submit" value="Detials"></form>
+<input style="width:78px;" type="submit" name="submit" value="Details"></form>
 <form  style="display:inline"><input type="hidden" name="bookid" value="">
 <input style="width:78px;" type="submit" name="submit" value="Borrow">
 </form></div></div></li>

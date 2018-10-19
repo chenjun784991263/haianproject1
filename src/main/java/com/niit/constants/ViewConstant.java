@@ -41,4 +41,7 @@ public class ViewConstant {
     public static final String ManageReserveRequest="managereserverequest.jsp";
     
     
+    public static final String ShowReport="WhatReport.jsp";
+    public static final String Report="report.jsp";
+    
 }
