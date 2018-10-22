@@ -21,7 +21,7 @@ public class QuartzService {
 		triggerBuilder.withIdentity("tirgger1","group1");
 		triggerBuilder.startNow();
 		
-		triggerBuilder.withSchedule(SimpleScheduleBuilder.simpleSchedule().withIntervalInHours(8).withRepeatCount(10000000));
+		triggerBuilder.withSchedule(SimpleScheduleBuilder.simpleSchedule().withIntervalInHours(4).withRepeatCount(10000000));
 		
 		Trigger trigger=triggerBuilder.build();
 		
